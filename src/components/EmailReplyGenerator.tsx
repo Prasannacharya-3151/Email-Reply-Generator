@@ -5,7 +5,7 @@ const EmailReplyGenerator: React.FC = () => {
     const [tone, setTone] = useState<string>("");
     const [replay, setReplay] = useState<string>("");
 
-    const handleGenerate = async () => {
+    const handleGenerator = async () => {
         if(!emailContent) {
             alert("Please enter email content");
             return;
@@ -33,6 +33,38 @@ const handleCopy = ()=>{
             onChange={(e) => setEmailContent(e.target.value)}
             />
         </div>
+
+        <div>
+            <label className="block mb-2 font-medium">Tone (optional)</label>
+            <select className="w-full border rounded-lg p-3"
+            value={tone}
+            onChange={(e) => setTone(e.target.value)}
+            >
+                <option value="Casual">Casual</option>
+                <option value="Formal">Casual</option>
+                <option value="Friendly">Casual</option>
+                <option value="Proffesion">Casual</option>
+            </select>
+        </div>
+        <button 
+        onClick={handleGenerator}
+
+        className="w-full bg-blue-400 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+            Generate Reply
+        </button>
+
+        {replay && (
+            <div className="border rounded-lg p-4 bg-gray-50">
+                <h2 className="font-semibold mb-2">Generated Reply</h2>
+                <textarea
+                readOnly
+                className="w-full border ronded-lg p-3 h-32 bg-gray-100"
+                value={replay}
+                />
+
+                <button
+        )}
     </div>
   );
 };
